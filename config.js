@@ -2,10 +2,10 @@
 
 const TABLES = {
   storeusers: 'storeusers',
-  storeconfigitems: 'storeconfigitems',
-  storeinventory: 'storeinventory',
-  solditemsfromstore: 'solditemsfromstore',
-  addeditemstostore: 'addeditemstostore'
+  storeconfigitems: 'storeconfigitems_slr',
+  storeinventory: 'storeinventory_slr',
+  solditemsfromstore: 'solditemsfromstore_slr',
+  addeditemstostore: 'addeditemstostore_slr'
 };
 
 // Make it accessible globally
