@@ -149,7 +149,7 @@ async function addItemstoStoreDaily(itemID, itemName, quantity, price, pdate, pt
     ]);
 
       // Fetch storeinventory from Supabase
-   
+  
 
   setAddedItemQuantity(itemID, quantity);
     if(AddedItemAvailable == 2){
