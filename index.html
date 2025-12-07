@@ -3,107 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Store Mnagement Services</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 0.6rem;
-      margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      width: 100%;
-      padding: 0.6rem;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    .error {
-      color: red;
-      margin-top: 0.5rem;
-      text-align: center;
-    }
-  </style>
+  <title>Homepage</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-xXf08PvOzayLlF53F2q6+1Oozdq8YQe7Hd8OVg/O8k0eGQQFFOl2w+YjP3sv08wU+lw6RgCGL8db1r7B8UnRyg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-  <div class="login-container">
-    <h2>User Login</h2>
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-      <div class="error" id="error-msg"></div>
-    </form>
+  <div class="button-container">
+    <button onclick="handleSites()"><i class="fas fa-globe"></i> SITES</button>
+    <button onclick="handleCustomers()"><i class="fas fa-users"></i> CUSTOMERS</button>
+    <button onclick="handleSettlements()"><i class="fas fa-handshake"></i> VISITS</button>
+     <button onclick="handleUsers()"><i class="fas fa-user-cog"></i> SETTELEMENTS</button>
+    <button onclick="handleReports()"><i class="fas fa-chart-line"></i> ADMIN REPORTS</button>
+    <button onclick="handleClose()"><i class="fas fa-times-circle"></i> CLOSE</button>
   </div>
 
-  <script src="config.js"></script>
-  <!-- Include Supabase JS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script>
-    // Initialize Supabase
-    const supabaseUrl = 'https://zabwuvdtqclhbuiocdey.supabase.co'; // ✅ Correct URL
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InphYnd1dmR0cWNsaGJ1aW9jZGV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3NDgzNDEsImV4cCI6MjA3MDMyNDM0MX0.T9cgmFpSup1OPwUD5hgEEhVbDfArPdkLaaAKjKlklxU'; // ✅ Full anon key
+    function handleSites() {
+     window.location.href = "sitesinfo.html";
+    }
 
-    supabase = supabase.createClient(supabaseUrl, supabaseKey); // ✅ Use window
+    function handleCustomers() {
+       window.location.href = "customerinfo.html";
+    }
 
+    function handleSettlements() {
+      window.location.href = "visits.html";
+    }
 
-    const loginForm = document.getElementById('login-form');
-    const errorMsg = document.getElementById('error-msg');
+    function handleReports() {
+      window.location.href = "adminreports.html";
+    }
 
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    function handleUsers() {
+      window.location.href = "settelements.html";
+    }
 
-      const password = document.getElementById('password').value.trim();
-
-      const tableName = TABLES.storeusers;
-      const { data, error } = await supabase
-        .from(tableName)
-        .select('password')
-        .eq('password', password);
-
-      if (error) {
-        errorMsg.textContent = 'Invalid User..!';
-        console.error(error);
-      } else if (data.length > 0) {
-        // Password match found
-        const username = document.getElementById('username').value.trim(); // ✅ Correct
-        localStorage.setItem('store_username', username); // Store username
-        errorMsg.style.color = 'green';
-        errorMsg.textContent = 'Login successful!';
-        // Redirect or load dashboard here
-     window.location.href = 'homepage.html';
-      } else {
-        errorMsg.textContent = 'Invalid Password.';
-      }
-    });
+    function handleClose() {
+      alert("CLOSE button clicked");
+    }
   </script>
 </body>
 </html>
